@@ -8,10 +8,20 @@ package Online;
  *
  * @author Hp
  */
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class TicTacToe implements ActionListener {
 
@@ -82,14 +92,6 @@ public class TicTacToe implements ActionListener {
                         
                         nc.sendString( Integer.toString(i) );
                         new Thread(new GetResponse()).start();
-                    }
-                } else {
-                    if (buttons[i].getText() == "") {
-                        buttons[i].setForeground(new Color(0, 0, 255));
-                        buttons[i].setText("O");
-                        myTurn = true;
-                        textfield.setText("its your turn");
-                        check();
                     }
                 }
             }
@@ -253,6 +255,13 @@ public class TicTacToe implements ActionListener {
             String s = nc.recieveString();
             int n = Integer.parseInt(s);
             buttons[n].doClick();
+
+            buttons[n].setForeground(new Color(0, 0, 255));
+            buttons[n].setText("O");
+            myTurn = true;
+            textfield.setText("its your turn");
+            check();
+
             return;
         }
     }
