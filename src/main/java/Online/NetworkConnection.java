@@ -42,4 +42,15 @@ public class NetworkConnection {
         }
         return obj;
     }
+
+    public void sendString(String s){
+        Data data = new Data();
+        data.msg = s;
+        write(data);
+    }
+
+    public String recieveString(){
+        Data data = (Data) read();
+        return data.msg;
+    }
 }

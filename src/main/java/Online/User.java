@@ -31,5 +31,16 @@ public class User {
         return opponent;
     }
     
-    
+    public void send(String s){
+        Data data = new Data();
+        data.msg = s;
+
+        nc.write(data);
+    }
+
+    public Data recieve() {
+        Data data = (Data) nc.read();
+
+        return data;
+    }
 }

@@ -5,6 +5,7 @@
 package Online;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class Server {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(12345);
         System.out.println("Server started...");
+        System.out.println(InetAddress.getLocalHost());
 
         while (true) {
             Socket socket = serverSocket.accept();
@@ -89,26 +91,26 @@ public class Server {
                 data.msg = "0";
                 player2.nc.write(data);
                                 
-                System.out.println("if block");
+                // System.out.println("if block");
                 
                 for(int i=0 ; i<9 ; i++){
                     if(i%2==0){
-                        System.out.println("Receiving data...." + player1.username);
+                        // System.out.println("Receiving data...." + player1.username);
                         data = (Data) player1.nc.read();
-                        System.out.println("received data\n");
+                        // System.out.println("received data\n");
                         
-                        System.out.println("Writing data to " + player2.username);
+                        // System.out.println("Writing data to " + player2.username);
                         player2.nc.write(data);
-                        System.out.println("Data sent.....");
+                        // System.out.println("Data sent.....");
                         
                     }else{
-                        System.out.println("Receiving data from : " + player2.username );
+                        // System.out.println("Receiving data from : " + player2.username );
                         data = (Data) player2.nc.read();
-                        System.out.println("received data\n");
+                        // System.out.println("received data\n");
                         
-                        System.out.println("Writing data to " + player1.username);
+                        // System.out.println("Writing data to " + player1.username);
                         player1.nc.write(data);
-                        System.out.println("Data sent.....");
+                        // System.out.println("Data sent.....");
                     }
                 }
 
@@ -121,24 +123,24 @@ public class Server {
                 data.msg = "0";
                 player1.nc.write(data);
                 
-                System.out.println("else block");
+                // System.out.println("else block");
                 for(int i=0 ; i<9 ; i++){
                     if(i%2==1){
-                        System.out.println("Receiving data...." + player1.username);
+                        // System.out.println("Receiving data...." + player1.username);
                         data = (Data) player1.nc.read();
-                        System.out.println("received data\n");
+                        // System.out.println("received data\n");
                         
-                        System.out.println("Writing data to " + player2.username);
+                        // System.out.println("Writing data to " + player2.username);
                         player2.nc.write(data);
-                        System.out.println("Data sent.....");
+                        // System.out.println("Data sent.....");
                     }else{
-                        System.out.println("Receiving data from : " + player2.username );
+                        // System.out.println("Receiving data from : " + player2.username );
                         data = (Data) player2.nc.read();
-                        System.out.println("received data\n");
+                        // System.out.println("received data\n");
                         
-                        System.out.println("Writing data to " + player1.username);
+                        // System.out.println("Writing data to " + player1.username);
                         player1.nc.write(data);
-                        System.out.println("Data sent.....");
+                        // System.out.println("Data sent.....");
                     }
                 }
             }
